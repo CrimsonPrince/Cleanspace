@@ -8,8 +8,3 @@ class SocietySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Society
         fields = ('id', 'email', 'name', 'description', 'category')
-
-class CreateSocietySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Society
-        fields = ('email', 'name', 'description', 'category')
