@@ -1,0 +1,16 @@
+docker run -d -p 8002:80 -e APP_MODULE="backend.wsgi:application" myimage
+version: '3'
+
+services:
+  web:
+    build: .
+    environment: 
+      - APP_MODULE="backend.wsgi
+      - 
+    command: gunicorn root.wsgi:application --workers 2 --bind :8000
+    networks:
+    - traefik-public
+
+networks:
+  traefik-public:
+    external: true
