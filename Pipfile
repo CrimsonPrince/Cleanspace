@@ -4,8 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-admin = "*"
+psycopg2 = "*"
 django = "*"
+django-admin = "*"
+gunicorn = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

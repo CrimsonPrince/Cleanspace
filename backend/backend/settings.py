@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -82,10 +80,10 @@ DATABASES = {
     'default': {
          'ENGINE': 'django.contrib.gis.db.backends.postgis',
          'NAME': 'gis',
-         'USER':   r4,
-         'PASSWORD': test,
-         'HOST': 'r4.ie',
-         'PORT': '5434',
+         'USER':   'test',
+         'PASSWORD': 'test',
+         'HOST': 'db.r4.ie',
+         'PORT': '5432',
     },
 }
 
