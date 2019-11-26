@@ -1,16 +1,18 @@
-docker run -d -p 8002:80 -e APP_MODULE="backend.wsgi:application" myimage
 version: '3'
 
 services:
   web:
     build: .
     environment: 
-      - APP_MODULE="backend.wsgi
-      - 
-    command: gunicorn root.wsgi:application --workers 2 --bind :8000
-    networks:
-    - traefik-public
-
-networks:
-  traefik-public:
-    external: true
+      APP_MODULE: ${APP_MODULE}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DEBUG: ${DEBUG}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS} 
+      DATABASE_ENGINE: ${DATABASE_ENGINE}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+    ports:
+      - 8002:80

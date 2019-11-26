@@ -5,9 +5,8 @@ name = "pypi"
 
 [packages]
 psycopg2 = "*"
-django = "*"
+Django = "*"
 django-admin = "*"
-gunicorn = "*"
 djangorestframework = "*"
 
 [dev-packages]
