@@ -28,7 +28,7 @@ RUN apt update
 RUN apt install -y \
 gdal-bin \
 libproj-dev \
-binutils
+binutils 
 
 COPY Pipfile /
 COPY Pipfile.lock /
