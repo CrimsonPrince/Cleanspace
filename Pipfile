@@ -8,6 +8,7 @@ psycopg2 = "*"
 Django = "*"
 django-admin = "*"
 djangorestframework = "*"
+uwsgi = "*"
 
 [dev-packages]
 
