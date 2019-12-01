@@ -1,7 +1,6 @@
 FROM python:3.7
 
-MAINTAINER Mark Foley
-
+LABEL AUTHOR kingr4@protonmail.ch
 # Install everything that you need exept libraries specific to your Django project - these come later.
 RUN apt-get -y update && apt-get -y upgrade && \
     apt-get -y --no-install-recommends --no-install-suggests install libgdal-dev nginx supervisor
@@ -26,8 +25,11 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 EXPOSE 80
 EXPOSE 443
 
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # When a new container is created, we'll run supervisord to start uwsgi and nginx.
-CMD ["supervisord", "-n"]
+CMD ["/start.sh"]
 
 # #Initial Setup, Maintainer Flag
 # FROM python:3
