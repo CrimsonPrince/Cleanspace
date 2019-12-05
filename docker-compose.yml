@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  web:
+  backend:
     image: crimsonprince/fypbackend
     labels:
     - "traefik.enable=true"
@@ -13,7 +13,7 @@ services:
     - "traefik.http.routers.fypbackend.rule=Host(`backend.r4.ie`)"
     - "traefik.http.routers.fypbackend.tls=true"
     - "traefik.http.routers.fypbackend.tls.certresolver=default"
-    enviroment:
+    environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DEBUG: ${DEBUG}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS} 
