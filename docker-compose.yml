@@ -1,10 +1,19 @@
-version: '3'
+version: '3.3'
 
 services:
   web:
-    build: .
-    environment: 
-      APP_MODULE: ${APP_MODULE}
+    image: crimsonprince/fypbackend
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.middlewares.fypbackend-https.redirectscheme.scheme=https"
+    - "traefik.http.routers.fypbackend-http.entrypoints=web"
+    - "traefik.http.routers.fypbackend-http.rule=Host(`backend.r4.ie`)"
+    - "traefik.http.routers.fypbackend-http.middlewares=fypbackend-https@docker"
+    - "traefik.http.routers.fypbackend.entrypoints=web-secure"
+    - "traefik.http.routers.fypbackend.rule=Host(`backend.r4.ie`)"
+    - "traefik.http.routers.fypbackend.tls=true"
+    - "traefik.http.routers.fypbackend.tls.certresolver=default"
+    enviroment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DEBUG: ${DEBUG}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS} 
@@ -14,5 +23,9 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
-    ports:
-      - 8002:80
+    networks:
+    - traefik-public
+
+networks:
+  traefik-public:
+    external: true
