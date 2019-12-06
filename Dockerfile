@@ -24,5 +24,7 @@ COPY supervisor-app.conf /etc/supervisor/conf.d/
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+EXPOSE 80
+
 #Run Start Script
 CMD ["/start.sh"]
