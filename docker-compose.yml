@@ -1,31 +1,22 @@
 version: '3.3'
-
 services:
-  backend:
-    image: crimsonprince/fypbackend
+  cleanspace-backend:
+    image: cleanspace-backend
     labels:
-    - "traefik.enable=true"
-    - "traefik.http.middlewares.fypbackend-https.redirectscheme.scheme=https"
-    - "traefik.http.routers.fypbackend-http.entrypoints=web"
-    - "traefik.http.routers.fypbackend-http.rule=Host(`backend.r4.ie`)"
-    - "traefik.http.routers.fypbackend-http.middlewares=fypbackend-https@docker"
-    - "traefik.http.routers.fypbackend.entrypoints=web-secure"
-    - "traefik.http.routers.fypbackend.rule=Host(`backend.r4.ie`)"
-    - "traefik.http.routers.fypbackend.tls=true"
-    - "traefik.http.routers.fypbackend.tls.certresolver=default"
-    environment:
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-      DEBUG: ${DEBUG}
-      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS} 
-      DATABASE_ENGINE: ${DATABASE_ENGINE}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.cleanspace-backend-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.cleanspace-backend-http.entrypoints=web"
+      - "traefik.http.routers.cleanspace-backend-http.rule=Host(`api.r4.ie`)"
+      - "traefik.http.routers.cleanspace-backend-http.middlewares=cleanspace-backend-https@docker"
+      - "traefik.http.routers.cleanspace-backend.entrypoints=web-secure"
+      - "traefik.http.routers.cleanspace-backend.rule=Host(`api.r4.ie`)"
+      - "traefik.http.routers.cleanspace-backend.tls=true"
+      - "traefik.http.routers.cleanspace-backend.tls.certresolver=default"
     networks:
-    - traefik-public
+      - traefik-public
 
 networks:
   traefik-public:
     external: true
+  traefik:
+    internal: true
