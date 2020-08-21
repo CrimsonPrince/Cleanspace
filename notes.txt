@@ -1,8 +1,0 @@
-#Cams covered Region
-Covered domain, also called regional domain, is :  –24,95°W/30,05°N/44,95°W/71,95°N on a grid with a resolution of 0.1°. 
-
-LonMin=-24.95, LatMin=30.05, LonMax=44.95, LatMax=71.95
-
-
-API KEY
-__dgW1uzE52mQGrUQ0ZVC_-5f8YdWcfJvmN1p3RYG5_yY__
