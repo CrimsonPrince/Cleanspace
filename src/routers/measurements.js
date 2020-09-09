@@ -16,5 +16,4 @@ router.get('/measurements/:type', async (req, res) => {
 })
 
 
-
 module.exports = router

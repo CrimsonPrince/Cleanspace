@@ -28,11 +28,32 @@ measurementSchema.statics.getAllType = async(type) => {
     date.setSeconds(0)
     date.setMilliseconds(0)
     logger.info(date.toISOString());
-    const measurements = await Measurements.find({ parameter: type, "date.utc": "2020-04-27T17:00:00.000Z"}).limit(2180)
+    const measurements = await Measurements.find({ "date.utc": "2020-04-27T17:00:00.000Z"})
     logger.info("Retrieved All Measurements")
     return measurements
 }
 
+measurementSchema.statics.getPast5Days = async(city) => {
+    var date = new Date();
+    date.setMinutes(0)
+    date.setSeconds(0)
+    date.setMilliseconds(0)
+    logger.info(date.toISOString());
+    const measurements = await Measurements.find({ "city": city}).limit(1000)
+    logger.info("Retrieved All Measurements")
+    return measurements
+}
+
+measurementSchema.statics.getPast5DaysType = async(city,type) => {
+    var date = new Date();
+    date.setMinutes(0)
+    date.setSeconds(0)
+    date.setMilliseconds(0)
+    logger.info(date.toISOString());
+    const measurements = await Measurements.find({ "city": city, "parameter": type}).limit(1000)
+    logger.info("Retrieved All Measurements")
+    return measurements
+}
 
 
 const Measurements = mongoose.model('Measurements', measurementSchema)
