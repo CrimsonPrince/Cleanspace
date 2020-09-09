@@ -17,6 +17,7 @@ services:
       - "traefik.http.routers.cleanspace-backend.rule=Host(`api.r4.ie`)"
       - "traefik.http.routers.cleanspace-backend.tls=true"
       - "traefik.http.routers.cleanspace-backend.tls.certresolver=default"
+      - "traefik.http.services.cleanspace-backend.loadbalancer.server.port=3000"
     networks:
       - traefik-public
 
