@@ -35,4 +35,10 @@ router.get('/cities/:cityName/:type', async (req, res) => {
 })
 
 
+router.get('/hello', async (req, res) => {
+    res.send("send")
+})
+
+
+
 module.exports = router
