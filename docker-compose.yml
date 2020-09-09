@@ -2,6 +2,11 @@ version: '3.3'
 services:
   cleanspace-backend:
     image: crimsonprince/fypbackend
+    environment:
+      MONGODB_URL: ${MONGODB_URL}
+      PORT: ${PORT}
+      LOGLEVEL: ${LOGLEVEL}
+      
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.cleanspace-backend-https.redirectscheme.scheme=https"
